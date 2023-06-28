@@ -30,12 +30,18 @@
   background-color: #000848;
 }
 
+.slider {
+  margin-bottom: 80px;
+}
+
 .rewiews {
   position: relative;
   background-color: #EBEDFF;
   box-shadow: 0 0px 20px -4px rgba(0, 0, 0, 0.8);
   padding-top: 50px;
   padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
   &__bgi {
     position: absolute;
     width: 320px;
@@ -84,5 +90,16 @@
       color: #05000B;
       text-align: center;
     }
+  }
+  &__addButton {
+    width: max-content;
+    padding: 10px 40px;
+    align-self: center;
+    font-family: 'Roboto', sans-serif, "Arial";
+    font-size: 16px;
+    background: #FF5A05;
+    color: #fff;
+    border-radius: 4px;
+    border: none;
   }
 }

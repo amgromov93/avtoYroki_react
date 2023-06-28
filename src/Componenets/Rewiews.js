@@ -4,9 +4,14 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import Slider from "react-slick";
+import PopUpRewiew from './PopUpRewiew';
+import { useState } from 'react';
 
 export default function Rewiews() {
+  const [toggle, setToggle] = useState('false');
+
   const rewiewClasses = styles.rewiews + ' ' + styles.container;
+  
   const settings = {
     dots: true,
     infinite: false,
@@ -16,6 +21,35 @@ export default function Rewiews() {
     slidesToScroll: 1,
     autoplay: true
   }
+
+  const userLogo = (
+    <svg width="50px" height="50px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="person">
+      <g data-name="Layer 2">
+        <path d="M12 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm6 10a1 1 0 0 0 1-1 7 7 0 0 0-14 0 1 1 0 0 0 1 1z" data-name="person" fill="#4252CF"></path>
+      </g>
+    </svg>
+  );
+
+  const userRewiew = [
+    {
+      id: 1,
+      img: userLogo,
+      name: 'Микита',
+      rewiew: 'Рекомендую! Чудовий інструктор, доступно подає всю інформацію, можна і посміятися і отримати за неуважність. Задоволений на всі сто відсотків.',
+    },
+    {
+      id: 2,
+      img: userLogo,
+      name: 'Олександр',
+      rewiew: 'Рекомендую! Чудовий інструктор, доступно подає всю інформацію, можна і посміятися і отримати за неуважність. Задоволений на всі сто відсотків.',
+    },
+    {
+      id: 3,
+      img: userLogo,
+      name: 'Олена',
+      rewiew: 'Рекомендую! Чудовий інструктор, доступно подає всю інформацію, можна і посміятися і отримати за неуважність. Задоволений на всі сто відсотків.',
+    },
+  ];
 
   return (
     <div>
@@ -28,46 +62,22 @@ export default function Rewiews() {
         </svg>
         <h3 className={styles.title}>Відгуки</h3>
         <Slider {...settings} className={styles.slider} id="sliderContainer">
-          <div className={styles.rewiews__box}>
-            <div className={styles.rewiews__item}>
-              <div className={styles.rewiews__item__logo}>
-                <svg width="50px" height="50px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="person">
-                  <g data-name="Layer 2">
-                    <path d="M12 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm6 10a1 1 0 0 0 1-1 7 7 0 0 0-14 0 1 1 0 0 0 1 1z" data-name="person" fill="#4252CF"></path>
-                  </g>
-                </svg>
+          {userRewiew.map((item) => {
+            return (
+              <div key={item.id} className={styles.rewiews__box}>
+                <div className={styles.rewiews__item}>
+                  <div className={styles.rewiews__item__logo}>
+                    {item.img}
+                  </div>
+                  <p className={styles.rewiews__item__name}>{item.name}</p>
+                  <p className={styles.rewiews__item__rewiew}>{item.rewiew}</p>
+                </div>
               </div>
-              <p className={styles.rewiews__item__name}>Микита</p>
-              <p className={styles.rewiews__item__rewiew}>Рекомендую! Чудовий інструктор, доступно подає всю інформацію, можна і посміятися і отримати за неуважність. Задоволений на всі сто відсотків.</p>
-            </div>
-          </div>
-          <div className={styles.rewiews__box}>
-            <div className={styles.rewiews__item}>
-              <div className={styles.rewiews__item__logo}>
-                <svg width="50px" height="50px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="person">
-                  <g data-name="Layer 2">
-                    <path d="M12 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm6 10a1 1 0 0 0 1-1 7 7 0 0 0-14 0 1 1 0 0 0 1 1z" data-name="person" fill="#4252CF"></path>
-                  </g>
-                </svg>
-              </div>
-              <p className={styles.rewiews__item__name}>Микита</p>
-              <p className={styles.rewiews__item__rewiew}>Рекомендую! Чудовий інструктор, доступно подає всю інформацію, можна і посміятися і отримати за неуважність. Задоволений на всі сто відсотків.</p>
-            </div>
-          </div>
-          <div className={styles.rewiews__box}>
-            <div className={styles.rewiews__item}>
-              <div className={styles.rewiews__item__logo}>
-                <svg width="50px" height="50px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="person">
-                  <g data-name="Layer 2">
-                    <path d="M12 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm6 10a1 1 0 0 0 1-1 7 7 0 0 0-14 0 1 1 0 0 0 1 1z" data-name="person" fill="#4252CF"></path>
-                  </g>
-                </svg>
-              </div>
-              <p className={styles.rewiews__item__name}>Микита</p>
-              <p className={styles.rewiews__item__rewiew}>Рекомендую! Чудовий інструктор, доступно подає всю інформацію, можна і посміятися і отримати за неуважність. Задоволений на всі сто відсотків.</p>
-            </div>
-          </div>
+            )
+          })}
         </Slider>
+        <button className={styles.rewiews__addButton} onClick={() => setToggle(!toggle)}>Залишити відгук</button>
+        <PopUpRewiew toggle={toggle} />
       </section>
     </div>
   )
