@@ -63,3 +63,13 @@
     border: none;
   }
 }
+
+@media screen and (min-width: 991px) {
+  .popup {
+    align-items: center;
+    &__box {
+      width: 50%;
+      border-radius: 8px;
+    }
+  }
+}

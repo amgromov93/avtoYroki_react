@@ -1,11 +1,26 @@
 import styles from '../sass/style.module.scss';
 
-export default function PopUpRewiew({ toggle }) {
+const BODY_SELECTOR = '.body';
+
+export default function PopUpRewiew({ toggle, setToggle }) {
   const popupActiveClasses = styles.popup + ' ' + styles.popup_active;
 
   function onCloseBtnClick() {
     document.querySelector('.style_popup__xRn68').classList.remove('style_popup_active__pLOaw');
+    setToggle(!toggle);
   }
+
+  const body = document.querySelector(BODY_SELECTOR);
+
+  function toggleOverflow() {
+    if (!toggle) {
+      body.classList.add(styles.body__overflow__none);
+    } else {
+      body.classList.remove(styles.body__overflow__none);
+    }
+  }
+
+  toggleOverflow();
 
   return (
     <div className={toggle ? styles.popup : popupActiveClasses}>

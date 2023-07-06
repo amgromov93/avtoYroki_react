@@ -1,5 +1,6 @@
 import styles from '../sass/style.module.scss';
 import logo from '../img/logoAvtoYroki_light.png';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   const footerClasses = styles.footer__container + ' ' + styles.container;
@@ -12,9 +13,9 @@ export default function Footer() {
         <article className={styles.footer__category}>
           <h4 className={styles.footer__block__title}>Категорії</h4>
           <ul className={styles.footer__linkList}>
-            <li><a href="./price.html">Прайс</a></li>
-            <li><a href="./questions.html">Питання</a></li>
-            <li><a href="./contacts.html">Контакти</a></li>
+            <li><Link to={'/price'}>Прайс</Link></li>
+            <li><Link to={'/questions'}>Питання</Link></li>
+            <li><Link to={'/contacts'}>Контакти</Link></li>
           </ul>
         </article>
         <article className={styles.footer__category}>

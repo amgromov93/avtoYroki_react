@@ -4,6 +4,7 @@ import logo from "../img/logoAvtoYroki_light.png";
 import headerImage from "../img/avtoschoolCar.png";
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const BODY_SELECTOR = '.body';
 
@@ -29,9 +30,9 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.header__background}>
         <div className={containerClasses}>
-          <a className={styles.header__logo} href="./index.html">
+          <Link className={styles.header__logo} to="/">
             <img src={logo} alt="logo" width="120" height="70"></img>
-          </a>
+          </Link>
           <div>
             <menu className={styles.header__menu}>
               <button type="button" onClick={() => setToggle(!toggle)} className={toggle ? styles.header__hamburger : styles.header__hamburger_active}>
@@ -40,10 +41,10 @@ export default function Header() {
                 <span className={styles.header__hamburger__line}></span>
               </button>
               <ul className={toggle ? styles.header__menu__links : styles.header__menu__links_active}>
-                <li><a href="./index.html">Головна</a></li>
-                <li><a href="./prices.html">Прайс</a></li>
-                <li><a href="./questions.html">Питання</a></li>
-                <li><a href="./contacts.html">Контакти</a></li>
+                <li><Link to={'/'}>Головна</Link></li>
+                <li><Link to={'/prices'}>Прайс</Link></li>
+                <li><Link to={'/questions'}>Питання</Link></li>
+                <li><Link to={'/contacts'}>Контакти</Link></li>
               </ul>
             </menu>
           </div>
